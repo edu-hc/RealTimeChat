@@ -1,7 +1,7 @@
 package com.realtime.chat.entities;
 
-import jakarta.persistence.Id;
 import lombok.*;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
@@ -16,13 +16,19 @@ import java.time.LocalDateTime;
 public class ChatMessage {
 
     @Id
-    private Long id;
+    private String id;
 
     private String content;
 
-    private User sender;
+    private Long senderId;
 
-    private Chat chat;
+    private Long chatId;
 
     private LocalDateTime timestamp;
+
+    public ChatMessage(String content, Long senderId, Long chatId) {
+        this.content = content;
+        this.senderId = senderId;
+        this.chatId = chatId;
+    }
 }

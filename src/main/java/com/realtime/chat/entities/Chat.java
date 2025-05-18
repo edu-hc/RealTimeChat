@@ -1,8 +1,7 @@
 package com.realtime.chat.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 import lombok.*;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.ArrayList;
@@ -24,5 +23,7 @@ public class Chat {
 
     private String name;
 
-    private Set<User> members = new HashSet<>();
+    private Set<Long> members = new HashSet<>();
+
+    private List<ChatMessage> messages = new ArrayList<>();
 }

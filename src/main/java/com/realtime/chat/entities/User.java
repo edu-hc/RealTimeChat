@@ -1,7 +1,7 @@
 package com.realtime.chat.entities;
 
-import jakarta.persistence.Id;
 import lombok.*;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.HashSet;
@@ -23,5 +23,5 @@ public class User {
 
     private String password;
 
-    private Set<Chat> chats = new HashSet<>();
+    private Set<Long> chats = new HashSet<>();
 }
