@@ -1,10 +1,31 @@
-HELP.md
-target/
-!.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
+### Arquivos de build e compilação ###
+/target/
+/build/
+/out/
+/bin/
+*.class
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+**/build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
 
-### STS ###
+### Diretórios e arquivos de IDEs ###
+# IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
+
+# Eclipse
 .apt_generated
 .classpath
 .factorypath
@@ -12,22 +33,54 @@ target/
 .settings
 .springBeans
 .sts4-cache
+!**/src/main/**/bin/
+!**/src/test/**/bin/
 
-### IntelliJ IDEA ###
-.idea
-*.iws
-*.iml
-*.ipr
+# VS Code
+.vscode/
+*.code-workspace
 
-### NetBeans ###
+# NetBeans
 /nbproject/private/
 /nbbuild/
 /dist/
 /nbdist/
 /.nb-gradle/
-build/
-!**/src/main/**/build/
-!**/src/test/**/build/
 
-### VS Code ###
-.vscode/
+### Config Local ###
+application-local.properties
+application-local.yml
+application-dev.properties
+application-dev.yml
+*.log
+*.log.*
+logs/
+
+### Arquivos do sistema operacional ###
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+### Arquivos Maven ###
+.mvn/
+mvnw
+mvnw.cmd
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+
+### Arquivos Gradle ###
+.gradle
+gradle/
+gradlew
+gradlew.bat
+
+### MongoDB ###
+/data/
+/dump/
+*.mdb
