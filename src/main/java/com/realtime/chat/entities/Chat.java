@@ -19,11 +19,15 @@ import java.util.Set;
 public class Chat {
 
     @Id
-    private Long id;
+    private String id;
 
     private String name;
 
-    private Set<Long> members = new HashSet<>();
+    private Set<String> members = new HashSet<>();
 
     private List<ChatMessage> messages = new ArrayList<>();
+
+    public Chat(String name) {
+        this.name = name;
+    }
 }

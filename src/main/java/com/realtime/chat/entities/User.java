@@ -17,11 +17,16 @@ import java.util.Set;
 public class User {
 
     @Id
-    private Long id;
+    private String id;
 
     private String username;
 
     private String password;
 
-    private Set<Long> chats = new HashSet<>();
+    private Set<String> chats = new HashSet<>();
+
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
 }

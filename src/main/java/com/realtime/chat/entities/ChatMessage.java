@@ -20,13 +20,13 @@ public class ChatMessage {
 
     private String content;
 
-    private Long senderId;
+    private String senderId;
 
-    private Long chatId;
+    private String chatId;
 
     private LocalDateTime timestamp;
 
-    public ChatMessage(String content, Long senderId, Long chatId) {
+    public ChatMessage(String content, String senderId, String chatId) {
         this.content = content;
         this.senderId = senderId;
         this.chatId = chatId;
