@@ -1,5 +1,6 @@
 package com.realtime.chat.controller;
 
+import com.realtime.chat.dtos.ConnectDTO;
 import com.realtime.chat.entities.Chat;
 import com.realtime.chat.entities.ChatMessage;
 import com.realtime.chat.repositories.ChatRepository;
@@ -30,17 +31,15 @@ public class ChatController {
 
     @MessageMapping("/message/{chatId}")
     @SendTo("/chat/{chatId}")
-    public ChatMessage sendMessage(@DestinationVariable Long chatId, @Payload ChatMessage message, SimpMessageHeaderAccessor headerAccessor) {
+    public ChatMessage sendMessage(@DestinationVariable String chatId, @Payload ChatMessage message, SimpMessageHeaderAccessor headerAccessor) {
         // Obter o ID do usuário da sessão WebSocket
-        Long userId = (Long) headerAccessor.getSessionAttributes().get("userId");
+        String userId = (String) headerAccessor.getSessionAttributes().get("userId");
 
         // Buscar o chat no MongoDB
         Chat chat = chatRepository.findById(chatId)
                 .orElseThrow(() -> new RuntimeException("Chat não encontrado"));
 
         // Configurar a mensagem
-        message.setId(UUID.randomUUID().toString());
-        message.setSenderId(userId);
         message.setTimestamp(LocalDateTime.now());
 
         // Salvar a mensagem (opção 1: dentro do documento chat)
@@ -50,5 +49,12 @@ public class ChatController {
         // Retornar a mensagem para broadcast
         return message;
 
+    }
+
+    @MessageMapping("/chat.connect")
+    public void connect(@Payload ConnectDTO message,
+                        SimpMessageHeaderAccessor headerAccessor) {
+        // Armazenar o userId na sessão
+        headerAccessor.getSessionAttributes().put("userId", message.userId());
     }
 }
